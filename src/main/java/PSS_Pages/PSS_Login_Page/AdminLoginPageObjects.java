@@ -12,15 +12,36 @@ public class AdminLoginPageObjects extends Utils {
 
     @FindBy(xpath="//input[@id='j_username']")
     @CacheLookup
-    WebElement usernamelocator;
+    private WebElement usernamelocator;
+
+    public void enterUsername (String username) {
+        usernamelocator.sendKeys(username);
+
+    }
 
     @FindBy(xpath="//input[@id='j_password']")
     @CacheLookup
-    WebElement passwordlocator;
+    private WebElement passwordlocator;
+
+    public void enterPassword (String password) {
+
+        passwordlocator.sendKeys(password);
+    }
 
     @FindBy(xpath="//input[@id='btnLogin']")
     @CacheLookup
-    WebElement loginButtonlocator;
+    private WebElement loginButtonlocator;
+
+    public void clickLoginbutton (){
+        explicitWaitElementClickable(loginButtonlocator);
+        click(loginButtonlocator);
+
+    }
+
+    public String title (){
+        driver.getTitle();
+        return title();
+    }
 
     public AdminLoginPageObjects() throws IOException {
     }

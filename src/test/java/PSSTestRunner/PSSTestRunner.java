@@ -3,7 +3,8 @@ package PSSTestRunner;
 
 import PSS_Pages.PSS_Geography_Page.AdminGeographyPageMethods;
 import PSS_Pages.PSS_Home_Page.AdminHomePageMethods;
-import PSS_Pages.PSS_Login_Page.AdminLoginPageMethods;
+//import PSS_Pages.PSS_Login_Page.AdminLoginPageMethods;
+import PSS_Pages.PSS_Login_Page.AdminLoginPageObjects;
 import PSS_Pages.PSS_Security_Page.AdminSecurityPageMethods;
 import Utilities.TestNGDataProvider;
 import Utilities.Utils;
@@ -34,7 +35,7 @@ public class PSSTestRunner extends Utils {
     public void logInToThePSSAdmin(String username, String password){
 
         try {
-            AdminLoginPageMethods newadminloginpage = PageFactory.initElements(driver, AdminLoginPageMethods.class);
+            AdminLoginPageObjects newadminloginpage = PageFactory.initElements(driver, AdminLoginPageObjects.class);
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             newadminloginpage.enterUsername(username);
             newadminloginpage.enterPassword(password);
