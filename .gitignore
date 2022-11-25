@@ -2,4 +2,5 @@ Extent_Reports/
 Screen_Capture_Result/
 target/
 Screen_Capture_Result.zip
-Console_Output.txt
+drivers/
+ConsoleOutput.txt

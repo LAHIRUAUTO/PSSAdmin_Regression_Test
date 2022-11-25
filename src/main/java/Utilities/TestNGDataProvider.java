@@ -9,15 +9,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class TestNGDataProvider extends GenericUtils {
-    String FilePath = "/home/user/Desktop/Udemy/Test/Test Data/PSStestdata.xls";
-    FileInputStream fs = new FileInputStream(FilePath);
-    Workbook wb = Workbook.getWorkbook(fs);
-    Sheet PSSAdminLogginSh = wb.getSheet("PssAdminLoggin");
-    Sheet PSSAdminHomaPageSh = wb.getSheet("PssAdminHomePage");
-
     SQLs sqLs;
-    public TestNGDataProvider() throws IOException, BiffException {
-
+    public TestNGDataProvider() {
         sqLs = new SQLs();
     }
 
@@ -28,54 +21,54 @@ public class TestNGDataProvider extends GenericUtils {
         if (methodName.getName().equalsIgnoreCase("LogInToThePSSAdmin")) {
 
             return new Object[][] {
-                    {sqLs.getuserName(),PSSAdminLogginSh.getCell("B3").getContents()},
+                    {sqLs.getuserName(),FileReaderManager.getInstance().getXlsFileReader().getCellData("PssAdminLogin", "B3")},
 
             };
 
         } else if (methodName.getName().equalsIgnoreCase("SearchForRoles")) {
             return new Object[][] {
-                    {PSSAdminHomaPageSh.getCell("A2").getContents()}
+                    {FileReaderManager.getInstance().getXlsFileReader().getCellData("PssAdminHomePage","A2")}
 
             };
 
         } else if (methodName.getName().equalsIgnoreCase("SearchForAirports")) {
             return new Object[][] {
-                    {PSSAdminHomaPageSh.getCell("A3").getContents()}
+                    {FileReaderManager.getInstance().getXlsFileReader().getCellData("PssAdminHomePage","A3")}
 
             };
 
         } else if (methodName.getName().equalsIgnoreCase("searchForCity")) {
             return new Object[][] {
-                    {PSSAdminHomaPageSh.getCell("A4").getContents()}
+                    {FileReaderManager.getInstance().getXlsFileReader().getCellData("PssAdminHomePage","A4")}
 
             };
 
         } else if (methodName.getName().equalsIgnoreCase("searchForCountry")) {
             return new Object[][] {
-                    {PSSAdminHomaPageSh.getCell("A5").getContents()}
+                    {FileReaderManager.getInstance().getXlsFileReader().getCellData("PssAdminHomePage","A5")}
 
             };
 
         } else if (methodName.getName().equalsIgnoreCase("searchForSalesTerritory")) {
             return new Object[][] {
-                    {PSSAdminHomaPageSh.getCell("A6").getContents()}
+                    {FileReaderManager.getInstance().getXlsFileReader().getCellData("PssAdminHomePage","A6")}
 
             };
 
         } else if (methodName.getName().equalsIgnoreCase("searchForStation")) {
             return new Object[][] {
-                    {PSSAdminHomaPageSh.getCell("A6").getContents()}
+                    {FileReaderManager.getInstance().getXlsFileReader().getCellData("PssAdminHomePage","A6")}
 
             };
 
         } else if (methodName.getName().equalsIgnoreCase("searchForNationality")) {
             return new Object[][] {
-                    {PSSAdminHomaPageSh.getCell("A4").getContents()}
+                    {FileReaderManager.getInstance().getXlsFileReader().getCellData("PssAdminHomePage","A4")}
 
             };
 
         }else {
-            throw new Exception("Incorrect Method name identified");
+            throw new Exception("Incorrect test case name identified");
         }
 
 

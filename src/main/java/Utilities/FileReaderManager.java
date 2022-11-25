@@ -5,6 +5,8 @@ public class FileReaderManager {
     private static FileReaderManager fileReaderManagerInstance = new FileReaderManager();
     private static ConfigFileReader configFileReader;
 
+    private static XlsFileReader xlsFileReader;
+
 
     private FileReaderManager() {
 
@@ -19,6 +21,10 @@ public class FileReaderManager {
 
     public ConfigFileReader getConfigReader() {
         return (configFileReader == null) ? new ConfigFileReader() : configFileReader;
+    }
+
+    public XlsFileReader getXlsFileReader() {
+        return (xlsFileReader == null) ? new XlsFileReader() : xlsFileReader;
     }
 
 
