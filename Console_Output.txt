@@ -1,39 +1,18 @@
-2022 11 12 01:13/: Test suite started 
-[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 105.0.5195.52 (resolved driver for Chrome 105)
-[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as /home/user/.cache/selenium/chromedriver/linux64/105.0.5195.52/chromedriver
-Starting ChromeDriver 105.0.5195.52 (412c95e518836d8a7d97250d62b29c2ae6a26a85-refs/branch-heads/5195@{#853}) on port 57947
+2022 11 25 14:39/: Test suite started 
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 107.0.5304.62 (resolved driver for Chrome 107)
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as /home/user/.cache/selenium/chromedriver/linux64/107.0.5304.62/chromedriver
+Starting ChromeDriver 107.0.5304.62 (1eec40d3a5764881c92085aaee66d25075c159aa-refs/branch-heads/5304@{#942}) on port 25791
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-Nov 12, 2022 1:13:32 AM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected upstream dialect: W3C
-Nov 12, 2022 1:13:32 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find an exact match for CDP version 105, so returning the closest version found: 104
-Nov 12, 2022 1:13:32 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-INFO: Found CDP implementation for version 105 of 104
 AVSYSLV
 Test Case - logInToThePSSAdmin : SUCCESS
-Test Case - searchForRoles : SUCCESS
-Test Case - searchForFunctionalUsage : SUCCESS
-Test Case - searchForAirports : SUCCESS
-Test Case - addAirports : SUCCESS
-Notification message is displayed
-No Records
-Test Case - searchForAirportsDST : SUCCESS
-Notification message is displayed
-No Records
-Test Case - addAirportsDST : SUCCESS
-Test Case - searchForCity : SUCCESS
-Test Case - searchForCountry : SUCCESS
-Test Case - searchForSalesTerritory : SUCCESS
-Test Case - searchForStation : SUCCESS
-Test Case - searchForNationality : SUCCESS
 log4j:WARN No appenders could be found for logger (freemarker.cache).
 log4j:WARN Please initialize the log4j system properly.
-2022 11 12 01:15/
+2022 11 25 14:39/
 
 ===============================================
 Test_Suite
-Total tests run: 12, Failures: 0, Skips: 0
+Total tests run: 1, Failures: 0, Skips: 0
 ===============================================
 

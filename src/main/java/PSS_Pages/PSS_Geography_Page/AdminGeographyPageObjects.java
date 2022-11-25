@@ -1,13 +1,11 @@
 package PSS_Pages.PSS_Geography_Page;
 
-import Utilities.Utils;
-import org.openqa.selenium.By;
+import Utilities.GenericUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
-public class AdminGeographyPageObjects extends Utils {
+public class AdminGeographyPageObjects extends GenericUtils {
 
     @FindBy (xpath = "//input[@name='airportCode']")
     WebElement airportCodeFieldLocator;

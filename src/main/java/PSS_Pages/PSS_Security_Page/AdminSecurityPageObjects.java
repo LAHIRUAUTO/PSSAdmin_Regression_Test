@@ -1,11 +1,11 @@
 package PSS_Pages.PSS_Security_Page;
 
-import Utilities.Utils;
+import Utilities.GenericUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
-public class AdminSecurityPageObjects extends Utils {
+public class AdminSecurityPageObjects extends GenericUtils {
 
     @FindBy (xpath = "/html/body/section/section[1]/section[2]/section/div[1]/div/div/div[3]/div[3]/div/table/tbody/tr[2]/td[2]")
     @CacheLookup

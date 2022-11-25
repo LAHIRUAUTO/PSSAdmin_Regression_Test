@@ -8,15 +8,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class TestNGDataProvider extends Utils {
+public class TestNGDataProvider extends GenericUtils {
     String FilePath = "/home/user/Desktop/Udemy/Test/Test Data/PSStestdata.xls";
     FileInputStream fs = new FileInputStream(FilePath);
     Workbook wb = Workbook.getWorkbook(fs);
     Sheet PSSAdminLogginSh = wb.getSheet("PssAdminLoggin");
     Sheet PSSAdminHomaPageSh = wb.getSheet("PssAdminHomePage");
+
+    SQLs sqLs;
     public TestNGDataProvider() throws IOException, BiffException {
 
-
+        sqLs = new SQLs();
     }
 
 
@@ -26,7 +28,7 @@ public class TestNGDataProvider extends Utils {
         if (methodName.getName().equalsIgnoreCase("LogInToThePSSAdmin")) {
 
             return new Object[][] {
-                    {DatabaseConnector.getuserName(),PSSAdminLogginSh.getCell("B3").getContents()},
+                    {sqLs.getuserName(),PSSAdminLogginSh.getCell("B3").getContents()},
 
             };
 

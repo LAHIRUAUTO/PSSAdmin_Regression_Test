@@ -1,6 +1,6 @@
 package PSS_Pages.PSS_Home_Page;
 
-import Utilities.Utils;
+import Utilities.GenericUtils;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.io.IOException;
 
-public class AdminHomePageObjects extends Utils {
+public class AdminHomePageObjects extends GenericUtils {
 
     public AdminHomePageObjects() throws IOException {
     }

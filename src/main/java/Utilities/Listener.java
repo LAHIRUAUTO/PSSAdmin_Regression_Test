@@ -3,24 +3,14 @@ package Utilities;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.testng.TestListenerAdapter;
-import org.testng.annotations.Parameters;
 
-import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.GregorianCalendar;
 
 
-public class Listener extends Utils implements ITestListener {
+public class Listener extends GenericUtils implements ITestListener {
     ExtentTest test;
 
     static ExtentReports extent = ExtentReporter.getReportObj ();

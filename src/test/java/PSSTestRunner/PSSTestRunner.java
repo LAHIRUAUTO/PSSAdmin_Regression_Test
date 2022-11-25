@@ -7,19 +7,16 @@ import PSS_Pages.PSS_Home_Page.AdminHomePageMethods;
 import PSS_Pages.PSS_Login_Page.AdminLoginPageObjects;
 import PSS_Pages.PSS_Security_Page.AdminSecurityPageMethods;
 import Utilities.TestNGDataProvider;
-import Utilities.Utils;
+import Utilities.GenericUtils;
 import com.sun.net.httpserver.Authenticator;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class PSSTestRunner extends Utils {
+public class PSSTestRunner extends GenericUtils {
 
     @Parameters({"url", "browser"})
     @BeforeTest

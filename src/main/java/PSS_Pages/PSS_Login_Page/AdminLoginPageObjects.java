@@ -1,13 +1,13 @@
 package PSS_Pages.PSS_Login_Page;
 
-import Utilities.Utils;
+import Utilities.GenericUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import javax.xml.xpath.XPath;
+
 import java.io.IOException;
 
-public class AdminLoginPageObjects extends Utils {
+public class AdminLoginPageObjects extends GenericUtils {
 
 
     @FindBy(xpath="//input[@id='j_username']")
