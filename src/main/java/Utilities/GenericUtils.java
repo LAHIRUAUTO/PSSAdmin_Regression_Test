@@ -16,10 +16,6 @@ import java.util.Properties;
 
 public class GenericUtils extends Test_Base {
 
-    //Implicit Wait start
-
-    //Implicit Wait end
-
     //Explicit Wait ElementVisible
     public void explicitWaitElementVisible(WebElement element) {
         WebDriverWait explicitwait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -142,74 +138,6 @@ public class GenericUtils extends Test_Base {
         return System.getProperty("user.dir")+"/Screen_Capture_Result/"+testCaseName+".png";
     }
     /*Get Screen shot end*/
-
-
-
-    /*//Capture Screen Shots start
-        @Parameters({ "browser"})
-        @AfterMethod
-
-        public void tearDown(ITestResult result, String browser) throws IOException {
-
-        test.log(LogStatus.INFO, driver + " - Test Case " + result.getName() + " Running");
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy MM dd HH:mm/");
-        LocalDateTime now = LocalDateTime.now();
-        System.out.println("This need to be run per each test methos / case");
-
-        if (ITestResult.FAILURE == result.getStatus()) {
-            test.log(LogStatus.FAIL, driver + " - Test Case " + result.getName() + " Faild");
-
-            try {
-                TakesScreenshot ts = (TakesScreenshot) driver;
-
-                File source = ts.getScreenshotAs(OutputType.FILE);
-
-                FileUtils.copyFile(source, new File(System.getProperty("user.dir") + "/Screen_Capture_Result/Failure_Screen_Capture/" + result.getName() + " On " + browser + ".png"));
-
-                System.out.println("Running the Test Case : " + result.getName() + " On " + browser);
-                System.out.println("Test Failed Screenshot taken " + result.getName() + " On " + browser);
-
-            } catch (Exception e) {
-
-                System.out.println("Exception while taking screenshot " + e.getMessage());
-            }
-
-
-        } else if (ITestResult.SUCCESS == result.getStatus()) {
-            test.log(LogStatus.PASS, driver + " - Test Case " + result.getName() + " Passed");
-
-            try {
-                TakesScreenshot ts = (TakesScreenshot) driver;
-
-                File source = ts.getScreenshotAs(OutputType.FILE);
-
-                FileUtils.copyFile(source, new File(System.getProperty("user.dir") +  "/Screen_Capture_Result/Success_Screen_Capture/" + result.getName() + " On " + browser + ".png"));
-
-                System.out.println("Running the Test Case : " + result.getName()+ " On " + browser);
-                System.out.println("Test Passed Screenshot taken " + result.getName()+ " On " + browser);
-            } catch (Exception e) {
-
-                System.out.println("Exception while taking screenshot " + e.getMessage());
-            }
-        } else if (ITestResult.SKIP == result.getStatus()) {
-            test.log(LogStatus.SKIP, driver + " - Test Case " + result.getName() + " Passed");
-
-            try {
-                TakesScreenshot ts = (TakesScreenshot) driver;
-
-                File source = ts.getScreenshotAs(OutputType.FILE);
-
-                FileUtils.copyFile(source, new File(System.getProperty("user.dir") +  "/Screen_Capture_Result/Skip_Screen_Capture/"+ result.getName() + " On " + browser + ".png"));
-
-                System.out.println("Running the Test Case : " + result.getName()+ " On " + browser);
-                System.out.println("Test Skiped Screenshot taken " + result.getName()+ " On " + browser);
-            } catch (Exception e) {
-
-                System.out.println("Exception while taking screenshot " + e.getMessage());
-            }
-        }
-    }
-    //Capture Screen Shots ends*/
 
 
 }

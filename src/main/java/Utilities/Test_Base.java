@@ -6,7 +6,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -16,7 +18,7 @@ public class Test_Base {
     public static WebDriver driver;
 
     @Parameters({"browser", "url"})
-    @BeforeTest
+    @BeforeSuite
     public static void intialize(String browser, String url) throws Exception {
 
         switch (browser) {
@@ -43,6 +45,12 @@ public class Test_Base {
         }
         driver.get(url);
         driver.manage().window().maximize();
+    }
+
+    @Parameters({"url", "browser"})
+    @BeforeTest
+    public void validateCurrentURL (String url, String browser){
+        Assert.assertTrue(driver.getCurrentUrl().equalsIgnoreCase(url), "Incorrect URL");
     }
 
     @BeforeMethod

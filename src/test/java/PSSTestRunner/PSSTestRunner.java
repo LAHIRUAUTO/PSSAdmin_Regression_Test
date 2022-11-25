@@ -18,14 +18,6 @@ import org.testng.asserts.SoftAssert;
 
 public class PSSTestRunner extends GenericUtils {
 
-    @Parameters({"url", "browser"})
-    @BeforeTest
-    public void validateCurrentURL (String url, String browser){
-        SoftAssert softassert = new SoftAssert();
-        softassert.assertTrue(driver.getCurrentUrl().equalsIgnoreCase(url), "Soft Assert Hit");
-        softassert.assertAll();
-        Assert.assertTrue(driver.getCurrentUrl().equalsIgnoreCase(url), "Incorrect URL");
-    }
 
     @Parameters({"title"})
     @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class)

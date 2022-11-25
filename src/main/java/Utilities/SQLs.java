@@ -14,8 +14,6 @@ public class SQLs {
         String query = "select * from t_user where user_id = 19687";
         ResultSet queryResult = DatabaseConnector.runSQL.executeQuery(query);
         queryResult.next();
-        String userName = queryResult.getString("login_name");
-        System.out.println(queryResult.getString("login_name"));
-        return userName;
+        return queryResult.getString("login_name");
     }
 }

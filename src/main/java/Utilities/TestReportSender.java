@@ -75,7 +75,7 @@ public class TestReportSender {
 
             String filename = System.getProperty("user.dir") +"/Extent_Reports/Test_Result.html";
             String filename2 = System.getProperty("user.dir") +"/Screen_Capture_Result.zip";
-            String filename3 = System.getProperty("user.dir") +"/Console_Output.txt";
+            String filename3 = System.getProperty("user.dir") +"/ConsoleOutput.txt";
 
 
 //Create data source to attach the file in mail
