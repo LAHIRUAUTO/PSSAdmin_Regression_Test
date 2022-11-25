@@ -13,6 +13,7 @@ import com.sun.net.httpserver.Authenticator;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.util.RetryAnalyzerCount;
 
 public class PSSTestRunner extends GenericUtils {
 
@@ -266,7 +267,7 @@ public class PSSTestRunner extends GenericUtils {
 
     }
 
-    @Test (dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = Authenticator.Retry.class)
+    @Test (dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryAnalyzerCount.class)
     public void Log_Out_From_The_PSS_Admin(){
 
 
