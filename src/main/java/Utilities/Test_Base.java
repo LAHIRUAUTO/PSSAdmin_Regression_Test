@@ -1,35 +1,28 @@
 package Utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.Properties;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class Browser_Base {
+public class Test_Base {
     public static WebDriver driver;
 
     @Parameters({"browser", "url"})
     @BeforeTest
-    public static void Intialize(String browser, String url) throws Exception {
+    public static void intialize(String browser, String url) throws Exception {
 
         switch (browser) {
             case "chrome" :
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
-                //System.setProperty("webdriver.chrome.driver", (System.getProperty("user.dir")+"/Drivers/chromedriver_linux64/chromedriver"));
-                //create chrome instance
-                //driver = new ChromeDriver();
                 break;
             case "firefox" :
                 WebDriverManager.firefoxdriver().setup();
@@ -47,21 +40,30 @@ public class Browser_Base {
 
             default:
                 throw new Exception("Browser is not correct");
-
-
-
         }
         driver.get(url);
         driver.manage().window().maximize();
-        //driver.manage().window().setSize(new Dimension (1024, 768));
-        //driver.manage().window().setPosition(new Point(100, 300));
-
-
     }
+
+    @BeforeMethod
+    public static void implicitwait () {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+    }
+
+
 
     @AfterTest
     public static void close() {
-
-        //driver.close();
+            driver.close();
     }
+    @Parameters ({"build", "Module", "TestReportSenderMailAddress", "TestReportSenderMailPassword", "TestReportReceiverMailAddress"})
+    @AfterSuite
+    public static void endSuite(String build, String module, String TestReportSenderMailAddress, String TestReportSenderMailPassword, String TestReportReceiverMailAddress) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy MM dd HH:mm/");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
+        ZipUtils.creatZipFile();
+        TestReportSender.sendPDFReportByGMail(TestReportSenderMailAddress, TestReportSenderMailPassword, TestReportReceiverMailAddress, "Test Result at " + dtf.format(now)+ " On "+ module +" "+ build, "Dear Mr Vikasitha,");
+    }
+    //1Slite0614
 }

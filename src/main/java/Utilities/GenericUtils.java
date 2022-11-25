@@ -4,26 +4,20 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-import org.testng.annotations.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Properties;
 
 
-public class GenericUtils extends Browser_Base{
+public class GenericUtils extends Test_Base {
 
     //Implicit Wait start
-    @BeforeMethod
-    public static void implicitwait () {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-    }
+
     //Implicit Wait end
 
     //Explicit Wait ElementVisible
@@ -216,25 +210,6 @@ public class GenericUtils extends Browser_Base{
         }
     }
     //Capture Screen Shots ends*/
-
-
-    @Parameters ({"build", "Module", "TestReportSenderMailAddress", "TestReportSenderMailPassword", "TestReportReceiverMailAddress"})
-    @AfterSuite
-    public static void endSuite(String build, String module, String TestReportSenderMailAddress, String TestReportSenderMailPassword, String TestReportReceiverMailAddress) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy MM dd HH:mm/");
-        LocalDateTime now = LocalDateTime.now();
-        System.out.println(dtf.format(now));
-        ZipUtils.creatZipFile();
-        TestReportSender.sendPDFReportByGMail(TestReportSenderMailAddress, TestReportSenderMailPassword, TestReportReceiverMailAddress, "Test Result at " + dtf.format(now)+ " On "+ module +" "+ build, "Dear Mr Vikasitha,");
-    }
-    //1Slite0614
-
-
-
-
-
-
-
 
 
 }

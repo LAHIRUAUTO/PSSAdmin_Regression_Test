@@ -3,15 +3,11 @@ package Utilities;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Protocol;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.Parameters;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static Utilities.Listener.extent;
-
-public class ExtentReporter extends Browser_Base{
+public class ExtentReporter extends Test_Base {
 
     public static ExtentReports getReportObj() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy MM dd HH:mm/");
