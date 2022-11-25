@@ -24,59 +24,22 @@
         <classes>
             <class name="PSSTestRunner.PSSTestRunner">
                 <methods>
-                    <include name="logInToThePSSAdmin"/>
-                    <include name="searchForRoles"/>
-                    <include name="searchForFunctionalUsage"/>
-                    <include name="searchForAirports"/>
-                    <include name="addAirports"/>
-                    <include name="searchForAirportsDST"/>
-                    <include name="addAirportsDST"/>
-                    <include name="searchForCity"/>
-                    <include name="searchForCountry"/>
-                    <include name="searchForSalesTerritory"/>
-                    <include name="searchForStation"/>
-                    <include name="searchForNationality"/>
-                    <exclude name="logOutFromThePSSAdmin"/>
+                    <include name="Log_In_To_The_PSS_Admin"/>
+                    <include name="Search_For_Roles"/>
+                    <include name="Search_For_Functional_Usage"/>
+                    <include name="Search_For_Airports"/>
+                    <include name="Add_Airports"/>
+                    <include name="Search_For_Airports_DST"/>
+                    <include name="Add_Airports_DST"/>
+                    <include name="Search_For_City"/>
+                    <include name="Search_For_Country"/>
+                    <include name="Search_For_Sales_Territory"/>
+                    <include name="Search_For_Station"/>
+                    <include name="Search_For_Nationality"/>
+                    <exclude name="Log_Out_From_The_PSS_Admin"/>
                 </methods>
             </class>
         </classes>
     </test>
-    <!--<test verbose="2" preserve-order="true" name="Sub_Suite_2">
-        <parameter name="browser" value="firefox"/>
-        <classes>
-
-        
-            <class name="PSSTestRunner.PSSTestRunner">
-                <methods>
-                    <include name="LogInToThePSSAdmin"/>
-                    <include name="LogOutFromThePSSAdmin"/>
-                </methods>
-            </class>
-        </classes>
-    </test> -->
-    <!--<test verbose="2" preserve-order="true" name="Sub_Suite_3">
-        <parameter name="browser" value="edge"/>
-        <classes>
-            <class name="PSSTestRunner.PSSTestRunner">
-                <methods>
-                    <include name="LogInToThePSSAdmin"/>
-                    <include name="LogOutFromThePSSAdmin"/>
-                </methods>
-            </class>
-        </classes>
-    </test>-->
-
-    <!--<test verbose="2" preserve-order="true" name="Sub_Suite_1">
-        <parameter name="browser" value="chromeheadless"/>
-        <classes>
-            <class name="PSSTestRunner.PSSTestRunner">
-                <methods>
-                    <include name="LogInToThePSSAdmin"/>
-                    <include name="ClickOnToogleMenu"/>
-                    <include name="ClickOnRole"/>
-                </methods>
-            </class>
-        </classes>
-    </test>-->
 
 </suite>

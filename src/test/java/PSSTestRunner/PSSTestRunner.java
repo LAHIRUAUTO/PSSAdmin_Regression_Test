@@ -6,24 +6,22 @@ import PSS_Pages.PSS_Home_Page.AdminHomePageMethods;
 //import PSS_Pages.PSS_Login_Page.AdminLoginPageMethods;
 import PSS_Pages.PSS_Login_Page.AdminLoginPageObjects;
 import PSS_Pages.PSS_Security_Page.AdminSecurityPageMethods;
+import Utilities.RetryFailureTest;
 import Utilities.TestNGDataProvider;
 import Utilities.GenericUtils;
 import com.sun.net.httpserver.Authenticator;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 public class PSSTestRunner extends GenericUtils {
 
 
     @Parameters({"title"})
-    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class)
-    public void logInToThePSSAdmin(String username, String password){
+    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, retryAnalyzer = RetryFailureTest.class)
+    public void Log_In_To_The_PSS_Admin(String username, String password){
 
-        try {
+
             AdminLoginPageObjects newadminloginpage = PageFactory.initElements(driver, AdminLoginPageObjects.class);
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             newadminloginpage.enterUsername(username);
@@ -31,19 +29,16 @@ public class PSSTestRunner extends GenericUtils {
             newadminloginpage.clickLoginbutton();
             newadminhomepage.mouseHoweDashBooard();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
     }
 
 
-    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"logInToThePSSAdmin"})
-    public void searchForRoles(String rolename) throws InterruptedException {
+    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Search_For_Roles(String rolename) throws InterruptedException {
 
-        try {
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminSecurityPageMethods newadminrolepage = PageFactory.initElements(driver, AdminSecurityPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweSecurity();
@@ -54,20 +49,18 @@ public class PSSTestRunner extends GenericUtils {
             newadminrolepage.clickRoleName();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
+
 
     }
 
-    @Test (dependsOnMethods = {"logInToThePSSAdmin"})
-    public void searchForFunctionalUsage() throws InterruptedException {
+    @Test (dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Search_For_Functional_Usage() throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminSecurityPageMethods newadminsecuritypage = PageFactory.initElements(driver, AdminSecurityPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweSecurity();
@@ -78,19 +71,17 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
 
     }
 
-    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"logInToThePSSAdmin"})
-    public void searchForAirports(String airportCode) throws InterruptedException {
+    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Search_For_Airports(String airportCode) throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminGeographyPageMethods newadmingeographypage = PageFactory.initElements(driver, AdminGeographyPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
@@ -102,41 +93,37 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
 
     }
 
-    @Test ( dependsOnMethods = {"logInToThePSSAdmin"})
-    public void addAirports () throws InterruptedException {
+    @Test ( dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Add_Airports() throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminGeographyPageMethods newadmingeographypage = PageFactory.initElements(driver, AdminGeographyPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickAirport();
             newadminhomepage.swithToIframe();
-            newadmingeographypage.clickAddAirportDSTButtonLocator();
+            newadmingeographypage.clickAddAirportButtonLocator();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
 
     }
 
-    @Test (dependsOnMethods = {"logInToThePSSAdmin"})
-    public void searchForAirportsDST() throws InterruptedException {
+    @Test (dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Search_For_Airports_DST() throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminGeographyPageMethods newadmingeographypage = PageFactory.initElements(driver, AdminGeographyPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
@@ -146,19 +133,17 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
 
     }
 
-    @Test (dependsOnMethods = {"logInToThePSSAdmin"})
-    public void addAirportsDST () throws InterruptedException {
+    @Test (dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Add_Airports_DST() throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminGeographyPageMethods newadmingeographypage = PageFactory.initElements(driver, AdminGeographyPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
@@ -168,20 +153,18 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
 
 
     }
 
-    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"logInToThePSSAdmin"})
-    public void searchForCity(String countryName) throws InterruptedException {
+    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Search_For_City(String countryName) throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminGeographyPageMethods newadmingeographypage = PageFactory.initElements(driver, AdminGeographyPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
@@ -193,19 +176,17 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
 
     }
 
-    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"logInToThePSSAdmin"})
-    public void searchForCountry(String countrycode) throws InterruptedException {
+    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Search_For_Country(String countrycode) throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminGeographyPageMethods newadmingeographypage = PageFactory.initElements(driver, AdminGeographyPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
@@ -217,19 +198,18 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
+
 
     }
 
-    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"logInToThePSSAdmin"})
-    public void searchForSalesTerritory(String territorycode) throws InterruptedException {
+    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Search_For_Sales_Territory(String territorycode) throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminGeographyPageMethods newadmingeographypage = PageFactory.initElements(driver, AdminGeographyPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
@@ -241,18 +221,16 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
     }
 
-    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"logInToThePSSAdmin"})
-    public void searchForStation( String stationcode) throws InterruptedException {
+    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Search_For_Station(String stationcode) throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminGeographyPageMethods newadmingeographypage = PageFactory.initElements(driver, AdminGeographyPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
@@ -264,18 +242,16 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
     }
 
-    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"logInToThePSSAdmin"})
-    public void searchForNationality( String countryCode) throws InterruptedException {
+    @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = RetryFailureTest.class)
+    public void Search_For_Nationality(String countryCode) throws InterruptedException {
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
             AdminGeographyPageMethods newadmingeographypage = PageFactory.initElements(driver, AdminGeographyPageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.clickToogleMenu();
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
@@ -287,23 +263,18 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
             driver.navigate().refresh();
-        }
-        catch (Exception e) {
-            driver.navigate().refresh();
-        }
+
     }
 
-    @Test (dependsOnMethods = {"logInToThePSSAdmin"}, retryAnalyzer = Authenticator.Retry.class)
-    public void logOutFromThePSSAdmin(){
+    @Test (dependsOnMethods = {"Log_In_To_The_PSS_Admin"}, retryAnalyzer = Authenticator.Retry.class)
+    public void Log_Out_From_The_PSS_Admin(){
 
-        try {
+
             AdminHomePageMethods newadminhomepage = PageFactory.initElements(driver, AdminHomePageMethods.class);
+            driver.navigate().refresh();
             newadminhomepage.gotologgedInUserinfor();
             newadminhomepage.clickLogoutButton();
-        }
-        catch (Exception e) {
 
-        }
 
 
     }

@@ -20,6 +20,7 @@ public class AdminGeographyPageMethods extends AdminGeographyPageObjects{
     }
 
     public void clickAddAirportButtonLocator () {
+
         explicitWaitElementVisible(addAirportButtonLocator);
     }
 

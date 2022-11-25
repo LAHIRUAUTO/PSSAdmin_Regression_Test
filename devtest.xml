@@ -24,7 +24,7 @@
         <classes>
             <class name="PSSTestRunner.PSSTestRunner">
                 <methods>
-                    <include name="logInToThePSSAdmin"/>
+                    <include name="Log_In_To_The_PSS_Admin"/>
                 </methods>
             </class>
         </classes>
