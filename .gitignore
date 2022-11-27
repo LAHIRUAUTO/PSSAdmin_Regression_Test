@@ -4,3 +4,4 @@ target/
 Screen_Capture_Result.zip
 drivers/
 ConsoleOutput.txt
+log4j.out
