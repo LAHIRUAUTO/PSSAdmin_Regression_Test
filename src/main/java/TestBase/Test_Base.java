@@ -1,5 +1,7 @@
-package Utilities;
+package TestBase;
 
+import Utilities.TestReportSender;
+import Utilities.ZipUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

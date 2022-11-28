@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class TestReportSender {
 
-    static void sendPDFReportByGMail(String from, String pass, String to, String subject, String body) {
+    public static void sendPDFReportByGMail(String from, String pass, String to, String subject, String body) {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy MM dd HH:mm");
         LocalDateTime now = LocalDateTime.now();
