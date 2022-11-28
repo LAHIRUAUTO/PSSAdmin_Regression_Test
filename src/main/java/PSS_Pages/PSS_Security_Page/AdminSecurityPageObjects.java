@@ -19,12 +19,26 @@ public class AdminSecurityPageObjects extends GenericUtils {
     @CacheLookup
     WebElement roleSearchButtonLocator;
 
+    @FindBy (xpath = "//div[@class='availableDiv']")
+    @CacheLookup
+    WebElement availablePrivilegeGridLocator;
+
+    @FindBy (xpath = "//div[@class='selectedDiv']")
+    @CacheLookup
+    WebElement assignedPrivilegeGridLocator;
+
     @FindBy (xpath = "//input[@id='RP_UnassignedFunction']")
     @CacheLookup
     WebElement unAssignedFunctionRadioButton;
 
     @FindBy (xpath = "//span[@class='spn-action search-btn']")
+    @CacheLookup
     WebElement functionSearchButtonLocator;
+
+    @FindBy (xpath = "//div[@id='jqgh_tblFunctionsNoRole_privilegeCategory']")
+    @CacheLookup
+    WebElement functionSearchResultGrid;
+
 
 
 }

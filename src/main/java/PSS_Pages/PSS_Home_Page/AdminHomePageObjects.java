@@ -34,6 +34,12 @@ public class AdminHomePageObjects extends GenericUtils {
     @CacheLookup
     WebElement dashboard;
 
+    @FindBy(xpath = "//div[@class='dashDefaults']//ul[@class='main-mnu']")
+    @CacheLookup
+    WebElement dashboardshortcut;
+
+
+
     @FindBy(xpath = "/html/body/header/a\n")
     @CacheLookup
     WebElement tooglemenu;

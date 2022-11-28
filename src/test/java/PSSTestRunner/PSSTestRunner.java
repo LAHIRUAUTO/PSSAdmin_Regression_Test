@@ -20,7 +20,7 @@ public class PSSTestRunner extends GenericUtils {
 
     @Parameters({"title"})
     @Test (dataProvider="SearchProvider",dataProviderClass= TestNGDataProvider.class, retryAnalyzer = RetryFailureTest.class)
-    public void Log_In_To_The_PSS_Admin(String username, String password){
+    public void Log_In_To_The_PSS_Admin(String username, String password) throws InterruptedException {
 
 
             AdminLoginPageObjects newadminloginpage = PageFactory.initElements(driver, AdminLoginPageObjects.class);
@@ -28,8 +28,9 @@ public class PSSTestRunner extends GenericUtils {
             newadminloginpage.enterUsername(username);
             newadminloginpage.enterPassword(password);
             newadminloginpage.clickLoginbutton();
-            newadminhomepage.mouseHoweDashBooard();
-            driver.navigate().refresh();
+            newadminhomepage.assertDashBoard();
+            switchToFrameWithIndex(0);
+            newadminhomepage.assertDashBoardShortCut();
 
     }
 
@@ -44,10 +45,11 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweSecurity();
             newadminhomepage.clickrole();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadminrolepage.enterRoleName(rolename);
             newadminrolepage.clickRoleSearchButton();
             newadminrolepage.clickRoleName();
+            newadminrolepage.assertRolePageContent();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
 
@@ -66,12 +68,12 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweSecurity();
             newadminhomepage.clickFunctionUsage();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadminsecuritypage.clickUnAssignedFunctionRadioButton();
             newadminsecuritypage.clickFunctionalSearchButton();
+            newadminsecuritypage.assertFunctionalSearchResultGrid();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
 
     }
@@ -87,13 +89,13 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickAirport();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadmingeographypage.clickAirportCodeFieldLocator(airportCode);
             newadmingeographypage.clickAirportSearchButtonLocator();
             newadmingeographypage.clickAirportLocator();
+            newadmingeographypage.assertAirportDetails();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
 
     }
@@ -109,11 +111,11 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickAirport();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadmingeographypage.clickAddAirportButtonLocator();
+            newadmingeographypage.assertAirportDetails();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
 
     }
@@ -129,11 +131,10 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickAirportDST();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadmingeographypage.clickAirportDSTSearchButtonLocator();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
 
     }
@@ -149,11 +150,11 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickAirportDST();
-            newadminhomepage.swithToIframe();
-            newadmingeographypage.clickAirportDSTSearchButtonLocator();
+            newadminhomepage.swithToIframe(1);
+            newadmingeographypage.clickAddAirportDSTButtonLocator();
+            newadmingeographypage.assertAddDST();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
 
 
@@ -170,13 +171,13 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickCity();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadmingeographypage.selectcountry(countryName);
             newadmingeographypage.clickCitySearchButtonLocator();
             newadmingeographypage.clickCityLocator();
+            newadmingeographypage.assertCityDetails();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
 
     }
@@ -192,13 +193,13 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickCountry();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadmingeographypage.clickCountryLocator(countrycode);
             newadmingeographypage.clickCountrySearchButtonLocator();
             newadmingeographypage.clickCountryRecordLocator();
+            newadmingeographypage.assertCountryDetails();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
 
 
@@ -215,13 +216,13 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickTerritory();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadmingeographypage.clickTerritoryLocator(territorycode);
             newadmingeographypage.clickTerritorySearchButtonLocator();
             newadmingeographypage.clickTerritoryRecordLocator();
+            newadmingeographypage.assertTerritoryDetails();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
     }
 
@@ -236,13 +237,13 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickStation();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadmingeographypage.selectStationCode(stationcode);
             newadmingeographypage.clickStationSearchButtonLocator();
             newadmingeographypage.clickStationRecordLocator();
+            newadmingeographypage.assertStationDetails();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
     }
 
@@ -257,13 +258,13 @@ public class PSSTestRunner extends GenericUtils {
             newadminhomepage.mouseHoweMaintenance();
             newadminhomepage.mouseHoweGeography();
             newadminhomepage.clickNationality();
-            newadminhomepage.swithToIframe();
+            newadminhomepage.swithToIframe(1);
             newadmingeographypage.clickNationalityLocator(countryCode);
             newadmingeographypage.clickNationalitySearchButtonLocator();
             newadmingeographypage.clickNationalityRecordLocator();
+            newadmingeographypage.assertNationalityDetails();
             newadminhomepage.swithToDefault();
             checkTheNotificationMessage();
-            driver.navigate().refresh();
 
     }
 

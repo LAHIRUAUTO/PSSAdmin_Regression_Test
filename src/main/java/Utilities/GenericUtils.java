@@ -38,8 +38,8 @@ public class GenericUtils extends Test_Base {
                 wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void threadSleep () throws InterruptedException {
-        Thread.sleep(5000);
+    public void sleeping(int milliSeconds) throws InterruptedException {
+        Thread.sleep(milliSeconds);
     }
 
     public void isEnabled (WebElement element) {
@@ -95,17 +95,52 @@ public class GenericUtils extends Test_Base {
         selectstationCode.selectByVisibleText(stationCode);
     }
 
+    public void sendKeysThroughJS(String keysToSend, WebElement element) {
 
+        JavascriptExecutor ex = (JavascriptExecutor) driver;
+        ex.executeScript("arguments[0].value='"+ keysToSend +"';", element);
+    }
 
-    public void appPropertyAccess () throws IOException {
-        //Load Property File
-        File src = new File(System.getProperty("user.dir") + "/App.properties");
-        FileInputStream objfile = new FileInputStream(src);
-        Properties obj = new Properties();
-        obj.load(objfile);
-        String setProjectPath = obj.getProperty("ProjectPath");
+    public void switchToFrameWithIndex(int frameIndex) {
+        driver.switchTo().frame(frameIndex);
+    }
+
+    public void pageEnd( ) throws InterruptedException {
+        sleeping(1500);
+        Actions action = new Actions(driver);
+        action.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+    }
+
+    public void pageUp( ) throws AWTException, InterruptedException {
+        sleeping(2000);
+        Robot rb = new Robot();
+        rb.keyPress(KeyEvent.VK_PAGE_UP);
+        rb.keyRelease(KeyEvent.VK_PAGE_UP);
 
     }
+
+
+    public void pageScroll(int wheelAmt ) throws AWTException, InterruptedException {
+        sleeping(2000);
+        Robot rb = new Robot();
+        rb.mouseWheel(wheelAmt);
+
+    }
+
+    public void pressTab( ) throws AWTException {
+        Robot rb = new Robot();
+        rb.keyPress(KeyEvent.VK_TAB);
+        rb.keyRelease(KeyEvent.VK_TAB);
+
+    }
+
+    public void pressEnter( ) throws AWTException {
+        Robot rb = new Robot();
+        rb.keyPress(KeyEvent.VK_ENTER);
+        rb.keyRelease(KeyEvent.VK_ENTER);
+
+    }
+
 
     public void checkTheNotificationMessage () {
 

@@ -16,6 +16,12 @@ public class AdminGeographyPageObjects extends GenericUtils {
     @FindBy (xpath = "//td[normalize-space()='HMB']")
     WebElement airportLocator;
 
+    @FindBy (xpath = "//input[@id='displayName']")
+    WebElement airportName;
+
+
+
+
     @FindBy (xpath = "//span[@class='spn-action add-btn']")
     WebElement addAirportButtonLocator;
 
@@ -24,6 +30,12 @@ public class AdminGeographyPageObjects extends GenericUtils {
 
     @FindBy (xpath = "//button[@id='btnAdd']")
     WebElement addAirportDSTButtonLocator;
+
+    @FindBy (xpath = "//span[@title='Select options']")
+    WebElement cityInDST;
+
+
+
 
     @FindBy (xpath = "//select[@id='country']")
     WebElement countryField;
@@ -35,6 +47,11 @@ public class AdminGeographyPageObjects extends GenericUtils {
 
     @FindBy (xpath = "/html[1]/body[1]/section[1]/section[1]/div[2]/section[1]/div[1]/div[1]/div[1]/div[3]/div[3]/div[1]/table[1]/tbody[1]/tr[2]/td[2]")
     WebElement cityLocator;
+
+    @FindBy (xpath = "//input[@id='cityNameAddEdit']")
+    WebElement cityName;
+
+
 
 
 
@@ -50,6 +67,12 @@ public class AdminGeographyPageObjects extends GenericUtils {
     @FindBy (xpath = "//td[normalize-space()='EG']")
     WebElement countryRecordLocator;
 
+    @FindBy (xpath = "//input[@id='countryNameAddEdit']")
+    WebElement countryName;
+
+
+
+
     @FindBy (xpath = "//input[@id='salesTerritoryCode']")
     WebElement territoryCodeLocator;
 
@@ -58,6 +81,11 @@ public class AdminGeographyPageObjects extends GenericUtils {
 
     @FindBy (xpath = "//td[normalize-space()='CAIRO']")
     WebElement territoryRecordLocator;
+
+    @FindBy (xpath = "//input[@id='salesTerritoryNameAddEdit']")
+    WebElement territoryName;
+
+
 
     @FindBy (id = "sltStationCity")
     @CacheLookup
@@ -69,6 +97,12 @@ public class AdminGeographyPageObjects extends GenericUtils {
     @FindBy (xpath = "//td[normalize-space()='CAI']")
     WebElement stationRecordLocator;
 
+    @FindBy (xpath = "//input[@id='stationName']")
+    WebElement stationName;
+
+
+
+
     @FindBy (xpath = "//input[@id='countryName']")
     WebElement nationalityCodeLocator;
 
@@ -77,6 +111,9 @@ public class AdminGeographyPageObjects extends GenericUtils {
 
     @FindBy (xpath = "//td[normalize-space()='Egypt']")
     WebElement nationalityRecordLocator;
+
+    @FindBy (xpath = "//input[@id='nationalityNameAddEdit']")
+    WebElement nationalityName;
 
 
 }

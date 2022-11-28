@@ -36,7 +36,7 @@
                     <include name="Search_For_Sales_Territory"/>
                     <include name="Search_For_Station"/>
                     <include name="Search_For_Nationality"/>
-                    <exclude name="Log_Out_From_The_PSS_Admin"/>
+                    <include name="Log_Out_From_The_PSS_Admin"/>
                 </methods>
             </class>
         </classes>

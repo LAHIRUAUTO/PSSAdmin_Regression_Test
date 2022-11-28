@@ -1,6 +1,7 @@
 package PSS_Pages.PSS_Geography_Page;
 
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class AdminGeographyPageMethods extends AdminGeographyPageObjects{
 
@@ -19,9 +20,15 @@ public class AdminGeographyPageMethods extends AdminGeographyPageObjects{
         doubleClick(airportLocator);
     }
 
+    public void assertAirportDetails () {
+        explicitWaitElementVisible(airportName);
+        Assert.assertTrue(airportName.isDisplayed());
+    }
+
     public void clickAddAirportButtonLocator () {
 
         explicitWaitElementVisible(addAirportButtonLocator);
+        addAirportButtonLocator.click();
     }
 
     public void clickAirportDSTSearchButtonLocator () {
@@ -32,6 +39,11 @@ public class AdminGeographyPageMethods extends AdminGeographyPageObjects{
     public void clickAddAirportDSTButtonLocator () {
         explicitWaitElementClickable(addAirportDSTButtonLocator);
         addAirportDSTButtonLocator.click();
+    }
+
+    public void assertAddDST () {
+        explicitWaitElementClickable(cityInDST);
+        Assert.assertTrue(cityInDST.isDisplayed());
     }
 
     public void selectcountry (String country) {
@@ -49,6 +61,13 @@ public class AdminGeographyPageMethods extends AdminGeographyPageObjects{
         doubleClick(cityLocator);
     }
 
+    public void assertCityDetails () {
+        explicitWaitElementVisible(cityName);
+        Assert.assertTrue(cityName.isDisplayed());
+    }
+
+
+
     public void clickCountryLocator (String countrycode) {
         explicitWaitElementVisible(countryCodeLocator);
         countryCodeLocator.sendKeys(countrycode);
@@ -62,6 +81,11 @@ public class AdminGeographyPageMethods extends AdminGeographyPageObjects{
     public void clickCountryRecordLocator () {
         explicitWaitElementClickable(countryRecordLocator);
         doubleClick(countryRecordLocator);
+    }
+
+    public void assertCountryDetails () {
+        explicitWaitElementVisible(countryName);
+        Assert.assertTrue(countryName.isDisplayed());
     }
 
     public void clickTerritoryLocator (String stationcode) {
@@ -79,7 +103,13 @@ public class AdminGeographyPageMethods extends AdminGeographyPageObjects{
         doubleClick(territoryRecordLocator);
     }
 
+    public void assertTerritoryDetails () {
+        explicitWaitElementVisible(territoryName);
+        Assert.assertTrue(territoryName.isDisplayed());
+    }
+
     public void selectStationCode(String stationCode) {
+
         selectByTextVisible(stationCodeLocator,stationCode );
     }
 
@@ -91,6 +121,11 @@ public class AdminGeographyPageMethods extends AdminGeographyPageObjects{
     public void clickStationRecordLocator () {
         explicitWaitElementClickable(stationRecordLocator);
         doubleClick(stationRecordLocator);
+    }
+
+    public void assertStationDetails () {
+        explicitWaitElementVisible(stationName);
+        Assert.assertTrue(stationName.isDisplayed());
     }
 
     public void clickNationalityLocator (String countryCode) {
@@ -106,6 +141,11 @@ public class AdminGeographyPageMethods extends AdminGeographyPageObjects{
     public void clickNationalityRecordLocator () {
         explicitWaitElementClickable(nationalityRecordLocator);
         doubleClick(nationalityRecordLocator);
+    }
+
+    public void assertNationalityDetails () {
+        explicitWaitElementVisible(nationalityName);
+        Assert.assertTrue(nationalityName.isDisplayed());
     }
 
 

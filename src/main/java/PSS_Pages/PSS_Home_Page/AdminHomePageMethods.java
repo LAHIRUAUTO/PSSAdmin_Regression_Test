@@ -1,6 +1,6 @@
 package PSS_Pages.PSS_Home_Page;
 
-import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class AdminHomePageMethods extends AdminHomePageObjects{
     public void clickToogleMenu () throws InterruptedException {
         explicitWaitElementVisible(tooglemenu);
         explicitWaitElementClickable(tooglemenu);
-        threadSleep();
+        sleeping(5000);
         click(tooglemenu);
     }
 
@@ -32,6 +32,18 @@ public class AdminHomePageMethods extends AdminHomePageObjects{
         mouseHover(dashboard);
     }
 
+    public void assertDashBoard () {
+        explicitWaitElementVisible(dashboard);
+        Assert.assertTrue(dashboard.isDisplayed());
+    }
+
+    public void assertDashBoardShortCut () {
+        explicitWaitElementVisible(dashboardshortcut);
+        Assert.assertTrue(dashboardshortcut.isDisplayed());
+    }
+
+    //img[@class='airlineLogo']
+
     public void mouseHoweSecurity () {
 
         mouseHover(security);
@@ -42,8 +54,9 @@ public class AdminHomePageMethods extends AdminHomePageObjects{
         click(role);
     }
 
-    public void swithToIframe () {
-        driver.switchTo().frame(1);
+    public void swithToIframe (int index) throws InterruptedException {
+        sleeping(2000);
+        driver.switchTo().frame(index);
 
     }
 
