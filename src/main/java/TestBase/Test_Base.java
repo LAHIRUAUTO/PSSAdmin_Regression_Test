@@ -12,12 +12,25 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Test_Base {
     public static WebDriver driver;
+
+
+    @BeforeSuite
+    public static void clearLog4jFile() throws IOException {
+        FileWriter fwOb = new FileWriter("log4j.out", false);
+        PrintWriter pwOb = new PrintWriter(fwOb, false);
+        pwOb.flush();
+        pwOb.close();
+        fwOb.close();
+    }
 
     @Parameters({"browser", "url"})
     @BeforeSuite
