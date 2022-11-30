@@ -1,5 +1,6 @@
 package TestBase;
 
+import Types.BrowserTypes;
 import Utilities.TestReportSender;
 import Utilities.ZipUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -34,22 +35,22 @@ public class Test_Base {
 
     @Parameters({"browser", "url"})
     @BeforeSuite
-    public static void intialize(String browser, String url) throws Exception {
+    public static void intialize(BrowserTypes browser, String url) throws Exception {
 
         switch (browser) {
-            case "chrome" :
+            case chrome:
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
-            case "firefox" :
+            case firefox:
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
-            case "edge" :
+            case edge:
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 break;
-            case "chromeheadless" :
+            case chromeheadless:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions option = new ChromeOptions();
                 option.setHeadless(true);
